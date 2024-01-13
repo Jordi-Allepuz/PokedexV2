@@ -27,6 +27,7 @@ import androidx.lifecycle.viewModelScope
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.pokedexv2.pokedexappv2.data.dataInfo.Pokemon
+import com.example.pokedexv2.pokedexappv2.ui.screens.PokemonPantallaFicha
 import com.example.pokedexv2.pokedexappv2.ui.viewmodels.PokemonViewModel
 import com.example.pokedexv2.ui.theme.PokedexV2Theme
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,7 +52,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Prueba(viewModel)
+                    PokemonPantallaFicha(viewModel)
                 }
             }
         }
@@ -59,42 +60,8 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@OptIn(ExperimentalCoilApi::class)
-@Composable
-fun Prueba(viewModel: PokemonViewModel) {
-
-    val pokemon: Pokemon? by viewModel.pokemon.observeAsState()
 
 
-    if (pokemon == null) {
-        CircularProgressIndicator()
-    } else {
-        Column (horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "Nombre: ${pokemon!!.name}")
-            Text(text = "ID: ${pokemon!!.id}")
-            Text(text = "Peso: ${pokemon!!.height/10.0}")
-            Text(text = "Altura: ${pokemon!!.weight/10.0}")
-            pokemon!!.stats.forEach { stat ->
-                Text(text = "${stat.stat.name}: ${stat.baseStat}")
-            }
-            pokemon!!.types.forEach { type ->
-                Text(text = "Tipo: ${type.type.name}")
-            }
-            val pokemonImagen = pokemon?.sprites?.other?.officialArtwork?.frontDefault
-            Text(text = pokemonImagen.toString())
-            if (pokemonImagen == null){
-                CircularProgressIndicator()
-            }else{
-                Image(
-                    painter = rememberImagePainter(pokemonImagen),
-                    contentDescription = "pokemonImagen",
-                    modifier = Modifier.width(180.dp),
-                    contentScale = ContentScale.Crop
-                )
-            }
-        }
-    }
-}
 
 
 

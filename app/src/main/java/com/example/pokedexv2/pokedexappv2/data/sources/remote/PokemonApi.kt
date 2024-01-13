@@ -8,13 +8,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface PokemonApi {
-    companion object {
-        val instance = Retrofit.Builder().baseUrl("https://pokeapi.co/api/v2/")
-            .addConverterFactory(MoshiConverterFactory.create())
-            .client(OkHttpClient.Builder().build())
-            .build().create(PokemonApi::class.java)
-    }
-
     @GET("pokemon/{name}")
     suspend fun getPokemonInfo(
         @Path("name") name: String
