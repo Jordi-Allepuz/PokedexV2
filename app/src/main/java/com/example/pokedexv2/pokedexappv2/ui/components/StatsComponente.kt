@@ -43,12 +43,14 @@ fun Stats(pokemon: Pokemon) {
                         .weight(1f)
                 )
                 Box(
-                    modifier = Modifier.weight(3f)
+                    modifier = Modifier
+                        .weight(3f)
                         .padding(start = 20.dp, end = 50.dp)
                         .clip(CircleShape)
                         .background(Color.White)
                         .height(20.dp)
-                ) {
+                )
+                {
                     val barraStat = (stat.baseStat.toFloat() / maxStat).coerceIn(0f, 1f)
 
                     var animacionActivada by remember {
@@ -56,8 +58,8 @@ fun Stats(pokemon: Pokemon) {
                     }
                     // Animación para cada barra
                     val valorbarraAnimada by animateFloatAsState(
-                        targetValue =  if (animacionActivada) barraStat else 0f,
-                        animationSpec = tween(durationMillis = 2000, easing = LinearOutSlowInEasing )
+                        targetValue = if (animacionActivada) barraStat else 0f,
+                        animationSpec = tween(durationMillis = 2000, easing = LinearOutSlowInEasing)
                     )
 
                     LaunchedEffect(key1 = true) {

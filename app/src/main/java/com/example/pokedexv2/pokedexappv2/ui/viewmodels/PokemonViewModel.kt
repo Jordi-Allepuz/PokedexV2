@@ -25,7 +25,7 @@ class PokemonViewModel @Inject constructor  ( private val getPokemoUseCase: GetP
 
     init {
         viewModelScope.launch {
-            _pokemon.value = getPokemoUseCase.execute("charizard")
+            _pokemon.value = getPokemoUseCase.execute("pikachu")
         }
     }
 

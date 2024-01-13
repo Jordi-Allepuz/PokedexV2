@@ -11,6 +11,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
@@ -18,14 +19,23 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule{
 
-    @Provides
-    @Singleton
-    fun providePokemonApi(): PokemonApi = Retrofit.Builder()
-        .baseUrl("https://pokeapi.co/api/v2/")
-        .addConverterFactory(MoshiConverterFactory.create())
-        .client(OkHttpClient.Builder().build())
-        .build()
-        .create(PokemonApi::class.java)
+//    @Provides
+//    @Singleton
+//    fun providePokemonApi(): PokemonApi = Retrofit.Builder()
+//        .baseUrl("https://pokeapi.co/api/v2/")
+//        .addConverterFactory(MoshiConverterFactory.create())
+//        .client(OkHttpClient.Builder().build())
+//        .build()
+//        .create(PokemonApi::class.java)
+
+    @Singleton @Provides
+    fun providePokemonApi(): PokemonApi {
+        return Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://pokeapi.co/api/v2/")
+            .build()
+            .create(PokemonApi::class.java)
+    }
 
 
     @Provides
