@@ -13,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,7 +26,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
+import com.example.pokedexv2.pokedexappv2.data.dataInfo.Pokemon
+import com.example.pokedexv2.pokedexappv2.ui.viewmodels.PokemonViewModel
 import com.example.pokedexv2.ui.theme.PokedexV2Theme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -33,6 +37,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     val viewModel by viewModels<PokemonViewModel>()
@@ -92,47 +97,7 @@ fun Prueba(viewModel: PokemonViewModel) {
 }
 
 
-interface PokeApi {
-    companion object {
-        val instance = Retrofit.Builder().baseUrl("https://pokeapi.co/api/v2/")
-            .addConverterFactory(MoshiConverterFactory.create())
-            .client(OkHttpClient.Builder().build())
-            .build().create(PokeApi::class.java)
-    }
-
-    @GET("pokemon/{name}")
-    suspend fun getPokemonInfo(
-        @Path("name") name: String
-    ): Pokemon
-
-}
 
 
-interface PokemonRepository {
-    suspend fun getPokemonInfo(nombrePokemon: String): Pokemon
-}
 
 
-class PokemonRepositoryImpl(private val api: PokeApi) : PokemonRepository {
-
-    override suspend fun getPokemonInfo(nombrePokemon: String): Pokemon {
-        return api.getPokemonInfo(nombrePokemon)
-    }
-}
-
-
-class PokemonViewModel(private val repository: PokemonRepository = PokemonRepositoryImpl(PokeApi.instance)) :
-    ViewModel() {
-
-//    val pokemon = mutableStateOf<Pokemon?>(null)
-
-    private val _pokemon = MutableLiveData<Pokemon>()
-    val pokemon: LiveData<Pokemon> = _pokemon
-
-    init {
-        viewModelScope.launch {
-            _pokemon.value = repository.getPokemonInfo("charizard")
-        }
-    }
-
-}
