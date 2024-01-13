@@ -29,10 +29,13 @@ import com.example.pokedexv2.pokedexappv2.ui.viewmodels.PokemonViewModel
 
 
 @Composable
-fun PokemonPantallaFicha(viewModel: PokemonViewModel) {
+fun PokemonPantallaFicha(
+    viewModel: PokemonViewModel
+) {
 
 //    val pokemon = viewModel.pokemon.value!!
     val pokemon: Pokemon? by viewModel.pokemon.observeAsState()
+
 
     if (pokemon == null) {
         CircularProgressIndicator()
