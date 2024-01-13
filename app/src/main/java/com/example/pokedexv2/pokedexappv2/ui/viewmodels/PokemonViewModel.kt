@@ -23,9 +23,15 @@ class PokemonViewModel @Inject constructor  ( private val getPokemoUseCase: GetP
     private val _pokemon = MutableLiveData<Pokemon>()
     val pokemon: LiveData<Pokemon> = _pokemon
 
-    init {
+//    init {
+//        viewModelScope.launch {
+//            _pokemon.value = getPokemoUseCase.execute("pikachu")
+//        }
+//    }
+
+    fun catchPokemon(pokemonName: String) {
         viewModelScope.launch {
-            _pokemon.value = getPokemoUseCase.execute("graveler")
+            _pokemon.value = getPokemoUseCase.execute(pokemonName)
         }
     }
 

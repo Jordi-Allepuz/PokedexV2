@@ -28,14 +28,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
+import com.example.pokedexv2.Routes
 import com.example.pokedexv2.pokedexappv2.data.dataInfo.Pokemon
 
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun Cabecera(pokemon: Pokemon) {
+fun Cabecera(pokemon: Pokemon, navigationController: NavHostController) {
 
     val tamañoPantalla = LocalConfiguration.current.screenHeightDp.dp
     val tamañoCabecera = tamañoPantalla * 0.35f
@@ -55,7 +57,7 @@ fun Cabecera(pokemon: Pokemon) {
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = { navigationController.navigate(Routes.PokemonBusqueda.route)}) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = "",

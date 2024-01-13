@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.pokedexv2.pokedexappv2.data.dataInfo.Pokemon
 import com.example.pokedexv2.pokedexappv2.ui.components.Cabecera
 import com.example.pokedexv2.pokedexappv2.ui.components.PesoAltura
@@ -30,7 +31,8 @@ import com.example.pokedexv2.pokedexappv2.ui.viewmodels.PokemonViewModel
 
 @Composable
 fun PokemonPantallaFicha(
-    viewModel: PokemonViewModel
+    viewModel: PokemonViewModel,
+    navigationController: NavHostController
 ) {
 
 //    val pokemon = viewModel.pokemon.value!!
@@ -47,7 +49,7 @@ fun PokemonPantallaFicha(
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Cabecera(pokemon = pokemon!!)
+            Cabecera(pokemon = pokemon!!, navigationController)
             Spacer(
                 modifier = Modifier
                     .fillMaxWidth()
