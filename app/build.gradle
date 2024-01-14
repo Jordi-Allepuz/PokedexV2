@@ -75,7 +75,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-compose:2.5.3'
 
 
-
+//Gson
     implementation 'com.google.code.gson:gson:2.9.0'
 
 //Dagger Hilt y Kapt
@@ -84,19 +84,13 @@ dependencies {
 
 
 //Coil
-//    implementation "io.coil-kt:coil:1.1.1"
-//    implementation "com.google.accompanist:accompanist-coil:0.7.0"
-
     implementation 'io.coil-kt:coil-compose:1.3.2'
 
-//    implementation 'io.coil-kt:coil-compose:2.5.0'
-
+//Palette
     implementation 'androidx.palette:palette:1.0.0'
 
 // Retrofit
-
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 
 
