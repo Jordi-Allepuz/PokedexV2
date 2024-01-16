@@ -32,7 +32,7 @@ import androidx.navigation.NavHostController
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.pokedexv2.Routes
-import com.example.pokedexv2.pokedexappv2.data.dataInfo.Pokemon
+import com.example.pokedexv2.pokedexappv2.domain.models.Pokemon
 
 
 @OptIn(ExperimentalCoilApi::class)
@@ -84,11 +84,11 @@ fun Cabecera(pokemon: Pokemon, navigationController: NavHostController) {
                     .fillMaxWidth()
                     .height(30.dp)
             )
-            if (pokemon.sprites.other.officialArtwork == null) {
+            if (pokemon.imageURL == null) {
                 CircularProgressIndicator()
             } else {
                 Image(
-                    painter = rememberImagePainter(data = pokemon.sprites.other.officialArtwork.frontDefault),
+                    painter = rememberImagePainter(data = pokemon.imageURL),
                     contentDescription = "pokemonImagen",
                     alignment = Alignment.BottomCenter,
                     modifier = Modifier

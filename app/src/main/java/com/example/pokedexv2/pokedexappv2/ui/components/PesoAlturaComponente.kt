@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.pokedexv2.pokedexappv2.data.dataInfo.Pokemon
+import com.example.pokedexv2.pokedexappv2.domain.models.Pokemon
 
 
 @Composable

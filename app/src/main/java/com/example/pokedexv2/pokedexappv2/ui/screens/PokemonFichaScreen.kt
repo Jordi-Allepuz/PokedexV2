@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.pokedexv2.pokedexappv2.data.dataInfo.Pokemon
+import com.example.pokedexv2.pokedexappv2.domain.models.Pokemon
 import com.example.pokedexv2.pokedexappv2.ui.components.Cabecera
 import com.example.pokedexv2.pokedexappv2.ui.components.PesoAltura
 import com.example.pokedexv2.pokedexappv2.ui.components.Stats

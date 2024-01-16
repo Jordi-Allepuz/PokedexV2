@@ -1,9 +1,8 @@
 package com.example.pokedexv2.pokedexappv2.data.dataInfo
 
-import com.example.pokedexv2.pokedexappv2.data.dataInfo.Ability
 import com.google.gson.annotations.SerializedName
 
-data class Pokemon(
+data class PokemonDTO(
     val abilities: List<Ability>,
     @SerializedName("base_experience")
     val baseExperience: Int,
