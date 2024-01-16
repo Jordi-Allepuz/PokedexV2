@@ -7,7 +7,7 @@
 Jordi Allepuz Janoher  2CFSF  DAM  I.E.S El Caminas
 
 ## Objetivo del Proyecto
-Extraer información desde un Json, el cual contiene datos sobre un Pokemon y mostrarlos en una interfáz. 
+Extraer información de la Api POKEAPI, utilizando Retrofit, Inyección de Dependencias, Clean Architecture. 
 
 ## Capturas de pantalla
 
