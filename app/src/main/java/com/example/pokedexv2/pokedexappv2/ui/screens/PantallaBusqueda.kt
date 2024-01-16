@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -54,20 +55,25 @@ fun PantallaBusqueda(viewModel: PokemonViewModel, navigationController: NavHostC
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
+                .height(180.dp)
         )
-        TextField(
+        OutlinedTextField(
             value = text,
             onValueChange = { text = it },
             label = { Text("Buscar Pokemon") },
             singleLine = true,
             shape = CircleShape,
             colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color(0xFFDF594F),
-                textColor = Color.Black
+                containerColor = Color(0xFFF77F76),
+                textColor = Color.Black,
             )
         )
-        Button(colors = ButtonDefaults.buttonColors(containerColor = Color.Red),
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(10.dp)
+        )
+        Button(colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE22A1C)),
             onClick = {
                 viewModel.catchPokemon(text)
                 navigationController.navigate(Routes.PokemonFicha.route)
