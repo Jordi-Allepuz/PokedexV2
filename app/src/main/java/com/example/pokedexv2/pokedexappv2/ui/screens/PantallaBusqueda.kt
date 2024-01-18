@@ -34,6 +34,7 @@ import com.example.pokedexv2.R
 import com.example.pokedexv2.Routes
 import com.example.pokedexv2.pokedexappv2.ui.viewmodels.PokemonViewModel
 import com.example.pokedexv2.ui.theme.pokemontipografi
+import java.util.Locale
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -75,7 +76,7 @@ fun PantallaBusqueda(viewModel: PokemonViewModel, navigationController: NavHostC
         )
         Button(colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE22A1C)),
             onClick = {
-                viewModel.catchPokemon(text)
+                viewModel.catchPokemon(text.lowercase())
                 navigationController.navigate(Routes.PokemonFicha.route)
             }) {
             Text(
