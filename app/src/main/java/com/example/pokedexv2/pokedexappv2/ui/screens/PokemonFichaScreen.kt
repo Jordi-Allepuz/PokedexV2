@@ -35,7 +35,6 @@ fun PokemonPantallaFicha(
     navigationController: NavHostController
 ) {
 
-//    val pokemon = viewModel.pokemon.value!!
     val pokemon: Pokemon? by viewModel.pokemon.observeAsState()
 
 
