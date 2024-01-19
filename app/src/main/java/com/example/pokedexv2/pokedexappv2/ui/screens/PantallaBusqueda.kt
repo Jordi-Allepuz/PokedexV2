@@ -14,7 +14,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,7 +33,7 @@ import com.example.pokedexv2.R
 import com.example.pokedexv2.Routes
 import com.example.pokedexv2.pokedexappv2.ui.viewmodels.PokemonViewModel
 import com.example.pokedexv2.ui.theme.pokemontipografi
-import java.util.Locale
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)
